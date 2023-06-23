@@ -36,7 +36,7 @@ public class Images {
         bees[1] = readImage("bee1.png");
 
         for (int i = 2; i < airs.length; i++) {
-            airs[i] = bairs[i] = bees[i] = readImage("bom"+(i-1)+".png");
+            airs[i] = bairs[i] = bees[i] = readImage("bom" + (i - 1) + ".png");
         }
 
         start = readImage("start.png");
@@ -47,7 +47,7 @@ public class Images {
     // 读取图片
     public static BufferedImage readImage(String fileName) {
         try {
-            BufferedImage img = ImageIO.read(FlyingObject.class.getResource(fileName));
+            BufferedImage img = ImageIO.read(FlyingObject.class.getResource("static/" + fileName));
             return img;
         } catch (IOException e) {
             e.printStackTrace();
