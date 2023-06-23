@@ -2,6 +2,7 @@ package ink.luckycat.shoot;
 
 import java.util.Random;
 import java.awt.image.BufferedImage;
+
 /**
  * 飞行物
  */
@@ -27,11 +28,11 @@ public abstract class FlyingObject {
         // 随机初始位置
         Random random = new Random();
         x = random.nextInt(World.WIDTH - width);
-        y = height;
+        y = -height;
     }
 
     // 天空 英雄机 子弹初始化
-    public FlyingObject(int width, int height, int x, int y){
+    public FlyingObject(int width, int height, int x, int y) {
         this.width = width;
         this.height = height;
         this.x = x;
@@ -42,17 +43,43 @@ public abstract class FlyingObject {
     public abstract BufferedImage getImage();
 
     // 判断是否活着
-    public boolean isLive(){
+    public boolean isLive() {
         return state == LIVE;
     }
 
     // 判断是否死了
-    public boolean isDead(){
+    public boolean isDead() {
         return state == DEAD;
     }
 
     // 判断是否要删除
-    public boolean isRemove(){
+    public boolean isRemove() {
         return state == REMOVE;
+    }
+
+    // 飞行物移动
+    public abstract void step();
+
+    // 检测敌人是否越界
+    public boolean isOutBounds() {
+        return y >= World.Height;
+    }
+
+    // 碰撞算法
+    public boolean isHit(FlyingObject e) {
+        int x1 = this.x - e.width;
+        int x2 = this.x + this.width;
+        int y1 = this.y - e.height;
+        int y2 = this.y + this.height;
+
+        if (e.x > x1 && e.x < x2 && e.y > y1 && e.y < y2){
+            return true;
+        }
+        return false;
+    }
+
+    // 飞行物死亡
+    public void goDead(){
+        state = DEAD;
     }
 }

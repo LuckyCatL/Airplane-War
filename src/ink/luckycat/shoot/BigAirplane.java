@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 /**
  * 大敌机
  */
-public class BigAirplane extends FlyingObject {
+public class BigAirplane extends FlyingObject implements EnemyScore {
     private int speed; // 移动速度
 
     public BigAirplane() {
@@ -27,5 +27,13 @@ public class BigAirplane extends FlyingObject {
             return img;
         }
         return null;
+    }
+
+    public void step() {
+        y += speed;
+    }
+
+    public int getScore(){
+        return 3; // 大敌机得分
     }
 }

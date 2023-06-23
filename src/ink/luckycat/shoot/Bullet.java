@@ -22,4 +22,15 @@ public class Bullet extends FlyingObject {
         }
         return null;
     }
+
+    public void step() {
+        y -= speed;
+    }
+
+    // 重新越界判断
+
+    @Override
+    public boolean isOutBounds() {
+        return y + height <= 0;
+    }
 }

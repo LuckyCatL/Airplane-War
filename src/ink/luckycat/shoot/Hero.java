@@ -40,4 +40,44 @@ public class Hero extends FlyingObject {
         bs[0] = new Bullet(x + 2 * xStep, y - yStep);
         return bs;
     }
+
+    public void step() {
+
+    }
+
+    /**
+     * 英雄机位置
+     */
+    public void moveTo(int x, int y) {
+        this.x = x - this.width / 2;
+        this.y = y - this.height / 2;
+    }
+
+    // 增加火力
+    public void addFire() {
+        fire += 40;
+    }
+
+    // 加命
+    public void addLife() {
+        life += 1;
+    }
+
+    // 减命
+    public void subtractLife() {
+        life--;
+    }
+
+    // 清除火力值
+    public void clearFire() {
+        fire = 0;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public int getFire() {
+        return fire;
+    }
 }

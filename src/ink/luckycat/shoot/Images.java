@@ -14,6 +14,9 @@ public class Images {
     public static BufferedImage[] airs; // 小敌机（包括爆炸图片）
     public static BufferedImage[] bairs; // 大敌机
     public static BufferedImage[] bees; // 小蜜蜂
+    public static BufferedImage start;
+    public static BufferedImage pause;
+    public static BufferedImage gameover;
 
     // 图片初始化
     static {
@@ -35,6 +38,10 @@ public class Images {
         for (int i = 2; i < airs.length; i++) {
             airs[i] = bairs[i] = bees[i] = readImage("bom"+(i-1)+".png");
         }
+
+        start = readImage("start.png");
+        pause = readImage("pause.png");
+        gameover = readImage("gameover.png");
     }
 
     // 读取图片

@@ -1,6 +1,7 @@
 package ink.luckycat.shoot;
 
 import java.awt.image.BufferedImage;
+
 /**
  * 天空
  */
@@ -14,12 +15,23 @@ public class Sky extends FlyingObject {
         y1 = -height;
     }
 
-    public BufferedImage getImage(){
-       return Images.sky;
+    public BufferedImage getImage() {
+        return Images.sky;
     }
 
-    public int getY1(){
+    public int getY1() {
         return y1;
+    }
+
+    public void step() {
+        y += speed;
+        y1 += speed;
+        if (y >= World.Height) {
+            y = -World.Height;
+        }
+        if (y1 >= World.Height) {
+            y1 = -World.Height;
+        }
     }
 
 }

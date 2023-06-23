@@ -6,17 +6,18 @@ import java.util.Random;
 /**
  * 小蜜蜂
  */
-public class Bee extends FlyingObject {
+public class Bee extends FlyingObject implements EnemyAward {
     private int xSpeed;
     private int ySpeed;
     private int awardType; // 奖励类型
+    private Random random = new Random();
+    private int rand = random.nextInt(2) == 0 ? 1 : -1;
 
     public Bee() {
         super(60, 51);
         xSpeed = 1;
         ySpeed = 2;
 
-        Random random = new Random();
         awardType = random.nextInt(2);
     }
 
@@ -34,5 +35,19 @@ public class Bee extends FlyingObject {
             return img;
         }
         return null;
+    }
+
+    // 移动方式
+    public void step() {
+        x += rand * xSpeed;
+        y += ySpeed;
+        if (x <= 0 || x + width >= World.WIDTH) {
+            xSpeed *= -1;
+        }
+    }
+
+    // 奖励（重写接口）
+    public int getAwardType(){
+        return awardType;
     }
 }
