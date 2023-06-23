@@ -44,7 +44,7 @@ public class World extends JPanel {
     private List<Bullet> bullets = new ArrayList<>();
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("飞机大战");
         World world = new World();
         frame.add(world);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -208,7 +208,7 @@ public class World extends JPanel {
 
     public void enterAction() {
         enterIndex++;
-        if (enterIndex % 40 == 0) { // 400毫秒生成一个敌人
+        if (enterIndex % 20 == 0) { // 400毫秒生成一个敌人
             FlyingObject obj = nextOne(); // 获取敌人对象
             enemies.add(obj);
         }
@@ -221,7 +221,7 @@ public class World extends JPanel {
 
     public void shootAction() {
         shootIndex++;
-        if (shootIndex % 30 == 0) { // 300ms射一次子弹
+        if (shootIndex % 50 == 0) { // 300ms射一次子弹
             Bullet[] bss = hero.shoot();
             for (int i = 0; i < bss.length; i++) {
                 bullets.add(bss[i]);
